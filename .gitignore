@@ -1,0 +1,10 @@
+/target
+/.idea
+/.idea_modules
+/.classpath
+/.project
+/.settings
+/RUNNING_PID
+/.g8
+/project/target
+/project/project/target

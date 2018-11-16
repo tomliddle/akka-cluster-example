@@ -1,0 +1,32 @@
+
+<configuration>
+
+	<contextName>cluster</contextName>
+
+	<conversionRule conversionWord="coloredLevel" converterClass="play.api.libs.logback.ColoredLevel" />
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date - %level %logger{15} - %message%n%xException{5}</pattern>
+		</encoder>
+	</appender>
+
+
+	<logger name="akka" level="INFO" />
+	<logger name="actors" level="INFO" />
+	<logger name="ch.qos.logback.classic.net.SyslogAppender" level="OFF" />
+
+
+	<root level="INFO">
+		<if condition='property("HOSTNAME").contains("local")'>
+			<then>
+				<appender-ref ref="STDOUT" />
+			</then>
+			<else>
+				<appender-ref ref="PAPERTRAIL" />
+			</else>
+		</if>
+
+	</root>
+
+</configuration>
